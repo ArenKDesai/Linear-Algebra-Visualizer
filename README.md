@@ -1,5 +1,13 @@
 # Linear Algebra Visualizer
 
-Goals:
-1. Make a class for functions (like QR, LU, etc.)
-2. Make this class inheritable, and make each defined function inherit an iterable so the function can yield strings to print to the console
+A Python module for visualizing popular linear algebra algorithms. 
+It is suggested to import this module as something easy to import, such as ```git clone {this repo} linviz```
+
+Ex:
+```
+from linviz import example
+
+example(100)
+```
+
+This will print the numbers 100 to 1 in the terminal. 
