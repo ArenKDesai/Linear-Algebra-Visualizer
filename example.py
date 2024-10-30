@@ -1,4 +1,4 @@
-from inherit_function import IterableFunction
+from .inherit_function import IterableFunction
 
 class ExampleFunction(IterableFunction):
     def __init__(self, n):
