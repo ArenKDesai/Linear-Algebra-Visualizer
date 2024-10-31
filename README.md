@@ -11,3 +11,8 @@ example(100)
 ```
 
 This will print the numbers 100 to 1 in the terminal. 
+
+## TODO
+- Add functionality to determinant.py for recursively solving the determinant of matrices of rank > 2
+- Add unit tests
+- Add more functions
