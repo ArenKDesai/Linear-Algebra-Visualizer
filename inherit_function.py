@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 import time
+import os
 
 LINE_CLEAR = '\x1b[2K' # Enables clearing stdout
 
@@ -10,6 +11,7 @@ class IterableFunction(ABC):
     def __init__(self, algorithm):
         self.complete = False
         self.algorithm = algorithm
+        self.solution = None
 
     def mark_complete(self):
         self.complete = True
@@ -22,8 +24,9 @@ class IterableFunction(ABC):
         while not self.complete:
             try:
                 step = next(self.algorithm)
-                print(f"{step}\r", end=LINE_CLEAR)
-                time.sleep(0.05)
+                os.system('cls' if os.name == 'nt' else 'clear')
+                print(step)
+                time.sleep(0.1)
 
             except StopIteration:
                 self.mark_complete()

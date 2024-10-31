@@ -29,7 +29,12 @@ class TwoByTwoSolver(IterableFunction):
             if i > 2*step_time and i < 3*step_time: # third step
                 third_step = f"{A}  Third step: Subtract the first by the second: {a} - {b} = {det}"
                 yield third_step
+            if i == 3*step_time: # final step
+                final_step = f"Determinant: {det}"
+        self.solution = det
 
 def determinant(A):
+    solver = TwoByTwoSolver(A)
     if A.shape == (2,2):
-        TwoByTwoSolver(A).play()
+        solver.play()
+    return solver.solution
