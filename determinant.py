@@ -11,26 +11,18 @@ class TwoByTwoSolver(IterableFunction):
         a = 0
         b = 0
         det = 0
-        for i in range(3 * 10 * 2): # six steps
-            if i == 0:
-                a = A[0,0] * A[1,1]
-            if i < 1*step_time: # first step
-                first_step = f"{A}  First step: Multiply {A[0,0]} with {A[1,1]} for {a}"
-                yield first_step
-
-            if i == 1*step_time:
-                b = A[1,0] * A[0,1]
-            if i > 1*step_time and i < 2*step_time: # second step
-                second_step = f"{A}  Second step: Multiply {A[1,0]} with {A[0,1]} for {b}"
-                yield second_step
-
-            if i == 2*step_time:
+        length = 2 # two seconds per step
+        for i in range(3):
+            if i == 0: # first step
+                yield f"{A} det(A) = (Top-Left * Bottom-Right) - (Top-Right * Bottom-Left)", 2
+            elif i == 1:
+                a = A[0,0] - A[1,1]
+                b = A[0,1] - A[1,0]
+                yield f"{A} ({A[0,0]} - {A[1,1]}) - ({A[0,1]} - {A[1,0]})", 2
+            elif i == 2:
                 det = a - b
-            if i > 2*step_time and i < 3*step_time: # third step
-                third_step = f"{A}  Third step: Subtract the first by the second: {a} - {b} = {det}"
-                yield third_step
-            if i == 3*step_time: # final step
-                final_step = f"Determinant: {det}"
+                yield f"{A} {a} - {b} = {det}", 2
+
         self.solution = det
 
 def determinant(A):

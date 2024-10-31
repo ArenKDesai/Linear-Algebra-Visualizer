@@ -23,10 +23,9 @@ class IterableFunction(ABC):
         """
         while not self.complete:
             try:
-                step = next(self.algorithm)
-                os.system('cls' if os.name == 'nt' else 'clear')
+                step, length = next(self.algorithm)
                 print(step)
-                time.sleep(0.1)
+                time.sleep(length)
 
             except StopIteration:
                 self.mark_complete()
