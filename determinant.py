@@ -16,8 +16,8 @@ class TwoByTwoSolver(IterableFunction):
             if i == 0: # first step
                 yield f"{A} det(A) = (Top-Left * Bottom-Right) - (Top-Right * Bottom-Left)", 2
             elif i == 1:
-                a = A[0,0] - A[1,1]
-                b = A[0,1] - A[1,0]
+                a = A[0,0] * A[1,1]
+                b = A[0,1] * A[1,0]
                 yield f"{A} ({A[0,0]} - {A[1,1]}) - ({A[0,1]} - {A[1,0]})", 2
             elif i == 2:
                 det = a - b
