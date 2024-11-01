@@ -5,6 +5,10 @@ class DeterminantSolver(IterableFunction):
     def __init__(self, A, run_viz):
         super().__init__(self.twoDsolver(A), run_viz)
 
+    def get_det(self, A):
+        if A.shape == (2,2):
+            return self.twoDsolver(A)
+
     def twoDsolver(self, A):
         a = 0
         b = 0
