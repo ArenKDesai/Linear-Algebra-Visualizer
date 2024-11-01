@@ -1,17 +1,14 @@
 from .inherit_function import IterableFunction
 import numpy as np
 
-class TwoByTwoSolver(IterableFunction):
-    # TODO: update this to accomodate for lists
-    def __init__(self, A):
-        super().__init__(self.run_solver(A))
+class DeterminantSolver(IterableFunction):
+    def __init__(self, A, run_viz):
+        super().__init__(self.twoDsolver(A), run_viz)
 
-    def run_solver(self, A):
-        step_time = 10*2 # each yield is 0.1 seconds, so each step will be 0.1*10*2 for 2 seconds
+    def twoDsolver(self, A):
         a = 0
         b = 0
         det = 0
-        length = 2 # two seconds per step
         for i in range(3):
             if i == 0: # first step
                 yield f"{A} det(A) = (Top-Left * Bottom-Right) - (Top-Right * Bottom-Left)", 2
@@ -25,8 +22,8 @@ class TwoByTwoSolver(IterableFunction):
 
         self.solution = det
 
-def determinant(A):
-    solver = TwoByTwoSolver(A)
+def determinant(A, run_viz):
+    solver = DeterminantSolver(A, run_viz)
     if A.shape == (2,2):
         solver.play()
     return solver.solution

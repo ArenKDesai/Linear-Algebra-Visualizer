@@ -8,10 +8,11 @@ class IterableFunction(ABC):
     """
     The generic function that other linear algebra functions will inherit. 
     """
-    def __init__(self, algorithm):
+    def __init__(self, algorithm, run_viz=True):
         self.complete = False
         self.algorithm = algorithm
         self.solution = None
+        self.run_viz = run_viz
 
     def mark_complete(self):
         self.complete = True
@@ -25,7 +26,8 @@ class IterableFunction(ABC):
             try:
                 step, length = next(self.algorithm)
                 print(step)
-                time.sleep(length)
+                if self.run_viz:
+                    time.sleep(length)
 
             except StopIteration:
                 self.mark_complete()

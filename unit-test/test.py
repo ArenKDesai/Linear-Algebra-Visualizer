@@ -20,19 +20,21 @@ class TestFunctions(unittest.TestCase):
     
     def test_determinant(self):
         real_det_A_1 = np.linalg.det(self.A_1)
-        test_det_A_1 = determinant(self.A_1)
+        test_det_A_1 = determinant(self.A_1, run_viz=False)
         difference = math.floor(abs(real_det_A_1 - test_det_A_1))
         self.assertEqual(difference, 0, f'incorrect determinant. real:{real_det_A_1}, test:{test_det_A_1}')
 
         real_det_A_2 = np.linalg.det(self.A_2)
-        test_det_A_2 = determinant(self.A_2)
+        test_det_A_2 = determinant(self.A_2, run_viz=False)
         difference = math.floor(abs(real_det_A_2 - test_det_A_2))
         self.assertEqual(difference, 0, f'incorrect determinant. real:{real_det_A_2}, test:{test_det_A_2}')
 
         real_det_A_3 = np.linalg.det(self.A_3)
-        test_det_A_3 = determinant(self.A_3)
+        test_det_A_3 = determinant(self.A_3, run_viz=False)
         difference = math.floor(abs(real_det_A_1 - test_det_A_1))
         self.assertEqual(difference, 0, f'incorrect determinant. real:{real_det_A_1}, test:{test_det_A_1}')
+
+
 
 if __name__ == '__main__':
     unittest.main()
