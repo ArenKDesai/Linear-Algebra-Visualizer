@@ -23,11 +23,6 @@ class IterableFunction(ABC):
         NOTE: algorithms must yield their steps as a string. 
         """
         while not self.complete:
-            try:
-                step, length = next(self.algorithm)
+            step, length = next(self.algorithm)
+            if self.run_viz:
                 print(step)
-                if self.run_viz:
-                    time.sleep(length)
-
-            except StopIteration:
-                self.mark_complete()
